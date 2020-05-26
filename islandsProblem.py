@@ -1,3 +1,18 @@
+from random import randint
+import random
+
+
+def get_random_graph(n):
+    row = []
+    graph = []
+    for _ in range(n):
+        for _ in range(n):
+            row.append(random.choices([0, 1], [70, 30])[0])
+        graph.append(row)
+        row = []
+    return graph
+
+
 def get_neighbours(namedGraph, node):
     neighbourNames = []
     nodePosition = get_node_position(namedGraph, node)
@@ -169,11 +184,9 @@ def get_islands():
 
 if __name__ == "__main__":
 
-    graph = [[1, 1, 1, 0, 0],
-             [0, 1, 0, 0, 1],
-             [1, 0, 0, 1, 1],
-             [0, 0, 0, 0, 0],
-             [1, 0, 1, 1, 1]]
+    graph = get_random_graph(10)
+    print("Map:")
+    print_board(graph)
 
     namedMap = create_named_graph(graph)
     print("Named graph:")
@@ -182,6 +195,6 @@ if __name__ == "__main__":
     toVisit = get_list_of_nodes_to_visit(namedMap)
     uniqueIslandsList = remove_duplicate_sets(get_islands())
 
-    print("Unique islands nodees:")
+    print("Unique islands nodes:")
     print(uniqueIslandsList)
     print("Number of islands:", len(uniqueIslandsList))
