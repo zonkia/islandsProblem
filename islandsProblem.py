@@ -180,10 +180,6 @@ if __name__ == "__main__":
     print_board(namedMap)
 
     toVisit = get_list_of_nodes_to_visit(namedMap)
-
-    visited = ()
-    islands = []
-
     uniqueIslandsList = remove_duplicate_sets(get_islands())
 
     print("Unique islands nodees:")
